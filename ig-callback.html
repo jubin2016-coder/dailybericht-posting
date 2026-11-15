@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>Anmeldung · DailyBericht Posting</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<main>
+  <h1>Anmeldung wird abgeschlossen …</h1>
+  <p class="lead">Diese Seite gibt die Instagram-Anmeldung an das Posting-Werkzeug auf dem eigenen Rechner weiter
+     (http://localhost:8724). Es werden keine Daten gespeichert oder an Dritte gesendet.</p>
+  <p id="hinweis"></p>
+</main>
+<script>
+  // Nur Code und State aus der Adresse an den lokalen Rechner weitergeben.
+  var q = window.location.search;
+  if (q && (q.indexOf("code=") !== -1 || q.indexOf("error") !== -1)) {
+    window.location.replace("http://localhost:8724/callback/" + q);
+  } else {
+    document.getElementById("hinweis").textContent = "Keine Anmeldedaten in der Adresse gefunden.";
+  }
+</script>
+</body>
+</html>
